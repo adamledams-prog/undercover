@@ -54,8 +54,7 @@ function demarrer() {
     return;
   }
 
-  showToast(`🚀 Partie lancée — ${total} joueurs !`);
-  // TODO: window.location.href = `game.html?joueurs=${total}&uc=${CONFIGS.uc.val}&white=${CONFIGS.white.val}`;
+  window.location.href = `game.html?joueurs=${total}&uc=${CONFIGS.uc.val}&white=${CONFIGS.white.val}`;
 }
 
 /* ---- Toast ---- */

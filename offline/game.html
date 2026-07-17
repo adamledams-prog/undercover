@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undercover — Partie</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <main class="game" id="app">
+
+    <!-- ══════════════════════════════
+         PANEL 1 — Saisie du nom
+         ══════════════════════════════ -->
+    <div class="panel" id="panelName">
+      <div class="step-badge" id="stepBadge">Joueur 1 / 5</div>
+      <h2 class="panel__title">Comment t'appelles-tu ?</h2>
+      <p class="panel__sub">Entre ton prénom puis consulte ton rôle en secret.</p>
+
+      <div class="name-field">
+        <label class="name-field__label" for="nameInput" id="nameLabel">Joueur 1</label>
+        <div class="name-field__wrap">
+          <input
+            class="name-field__input"
+            id="nameInput"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            maxlength="20"
+            placeholder="Ton prénom…"
+          />
+          <button class="name-field__clear" id="clearBtn" aria-label="Effacer" onclick="clearName()">✕</button>
+        </div>
+      </div>
+
+      <button class="action-btn action-btn--primary" id="revealBtn" onclick="revealRole()">
+        <span>👁 Voir mon rôle</span>
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════
+         PANEL 2 — Révélation du rôle
+         ══════════════════════════════ -->
+    <div class="panel panel--hidden" id="panelRole">
+      <div class="step-badge" id="roleBadge">Joueur 1</div>
+
+      <div class="role-card" id="roleCard">
+        <span class="role-card__emoji" id="roleEmoji">🃏</span>
+        <span class="role-card__word" id="roleWord">—</span>
+        <span class="role-card__hint" id="roleHint">Mémorise ton mot !</span>
+      </div>
+
+      <p class="role-note">Ne montre pas cet écran aux autres joueurs.</p>
+
+      <button class="action-btn action-btn--next" onclick="nextPlayer()">
+        <span>✓ Suivant</span>
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════
+         PANEL 3 — Passer l'appareil
+         ══════════════════════════════ -->
+    <div class="panel panel--hidden" id="panelPass">
+      <div class="pass-icon">📱</div>
+      <h2 class="panel__title" id="passTitle">Passe l'appareil à<br><strong id="passName">Joueur 2</strong></h2>
+      <p class="panel__sub">Assure-toi que personne d'autre ne regarde.</p>
+      <button class="action-btn action-btn--primary" onclick="showName()">C'est bon →</button>
+    </div>
+
+    <!-- ══════════════════════════════
+         PANEL 4 — Tout le monde a son rôle
+         ══════════════════════════════ -->
+    <div class="panel panel--hidden" id="panelDone">
+      <div class="done-icon">🎮</div>
+      <h2 class="panel__title">Tout le monde est prêt !</h2>
+      <p class="panel__sub">La partie peut commencer. Décrivez votre mot chacun votre tour.</p>
+      <div class="done-recap" id="doneRecap"></div>
+      <button class="action-btn action-btn--primary" onclick="window.location.href='../index.html'">
+        Retour à l'accueil
+      </button>
+    </div>
+
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
