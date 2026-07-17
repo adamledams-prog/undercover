@@ -15,6 +15,11 @@
     <div class="blob blob3"></div>
   </div>
 
+  <!-- Barre de progression globale -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
   <main class="game" id="app">
 
     <!-- ══════════════════════════════
@@ -22,6 +27,9 @@
          ══════════════════════════════ -->
     <div class="panel" id="panelName">
       <div class="step-badge" id="stepBadge">Joueur 1 / 5</div>
+
+      <div class="player-avatar" id="playerAvatar">1</div>
+
       <h2 class="panel__title">Comment t'appelles-tu ?</h2>
       <p class="panel__sub">Entre ton prénom puis consulte ton rôle en secret.</p>
 
@@ -37,11 +45,11 @@
             maxlength="20"
             placeholder="Ton prénom…"
           />
-          <button class="name-field__clear" id="clearBtn" aria-label="Effacer" onclick="clearName()">✕</button>
+          <button class="name-field__clear" id="clearBtn" aria-label="Effacer">✕</button>
         </div>
       </div>
 
-      <button class="action-btn action-btn--primary" id="revealBtn" onclick="revealRole()">
+      <button class="action-btn action-btn--primary" id="revealBtn">
         <span>👁 Voir mon rôle</span>
       </button>
     </div>
@@ -60,8 +68,8 @@
 
       <p class="role-note">Ne montre pas cet écran aux autres joueurs.</p>
 
-      <button class="action-btn action-btn--next" onclick="nextPlayer()">
-        <span>✓ Suivant</span>
+      <button class="action-btn action-btn--ghost" id="memorizedBtn">
+        <span>✓ C'est mémorisé</span>
       </button>
     </div>
 
@@ -72,7 +80,7 @@
       <div class="pass-icon">📱</div>
       <h2 class="panel__title" id="passTitle">Passe l'appareil à<br><strong id="passName">Joueur 2</strong></h2>
       <p class="panel__sub">Assure-toi que personne d'autre ne regarde.</p>
-      <button class="action-btn action-btn--primary" onclick="showName()">C'est bon →</button>
+      <button class="action-btn action-btn--primary" id="passBtn">C'est bon →</button>
     </div>
 
     <!-- ══════════════════════════════
@@ -83,13 +91,13 @@
       <h2 class="panel__title">Tout le monde est prêt !</h2>
       <p class="panel__sub">La partie peut commencer. Décrivez votre mot chacun votre tour.</p>
       <div class="done-recap" id="doneRecap"></div>
-      <button class="action-btn action-btn--primary" onclick="window.location.href='../index.html'">
+      <button class="action-btn action-btn--primary" id="doneBtn">
         Retour à l'accueil
       </button>
     </div>
 
   </main>
 
-  <script src="game.js"></script>
+  <script type="module" src="game.js"></script>
 </body>
 </html>

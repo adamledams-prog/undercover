@@ -6,11 +6,11 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 480px;
-  padding: 1.5rem 1.25rem 2rem;
+  max-width: 440px;
+  padding: 1.75rem 1.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.5rem;
   min-height: 100dvh;
 }
 
@@ -46,27 +46,27 @@
 }
 
 .lobby__badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--clr-offline);
   background: rgba(249,115,22,0.12);
-  border: 1px solid rgba(249,115,22,0.25);
+  border: 1px solid rgba(249,115,22,0.22);
   border-radius: 2rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.28rem 0.85rem;
   width: fit-content;
 }
 
 .lobby__title {
   font-size: clamp(1.7rem, 7vw, 2.2rem);
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.5px;
   color: var(--clr-text);
 }
 
 .lobby__sub {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: var(--clr-muted);
 }
 
@@ -74,8 +74,8 @@
 .config-card {
   background: var(--clr-card);
   border: 1px solid var(--clr-border);
-  border-radius: var(--radius-lg);
-  padding: 0.5rem 1rem;
+  border-radius: var(--radius-xl);
+  padding: 0.25rem 1.1rem;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-card);
@@ -103,8 +103,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.65rem 0;
+  padding: 0.9rem 0;
   gap: 0.75rem;
+  min-height: 64px;
 }
 
 .counter-row__info {
@@ -114,15 +115,15 @@
 }
 
 .counter-row__icon {
-  font-size: 1.1rem;
-  width: 28px;
+  font-size: 1.2rem;
+  width: 30px;
   text-align: center;
   flex-shrink: 0;
 }
 
 .counter-row__label {
   display: block;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--clr-text);
   line-height: 1.2;
@@ -130,8 +131,9 @@
 
 .counter-row__range {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--clr-muted);
+  margin-top: 0.1rem;
 }
 
 /* ---- Inline counter (- val +) ---- */
@@ -143,13 +145,13 @@
 }
 
 .ci-btn {
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1.5px solid var(--clr-border);
+  border: 1.5px solid var(--clr-border-2);
   background: var(--clr-surface);
   color: var(--clr-text);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1;
   cursor: pointer;
@@ -157,64 +159,64 @@
   align-items: center;
   justify-content: center;
   transition: transform var(--transition), background var(--transition),
-              border-color var(--transition);
+              border-color var(--transition), box-shadow var(--transition);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
 }
+
+.ci-btn:not(:disabled):active { transform: scale(0.85); }
 
 .ci-btn:not(:disabled):hover {
   background: rgba(108,99,255,0.15);
   border-color: var(--clr-online);
+  box-shadow: 0 0 12px rgba(108,99,255,0.25);
 }
 
-.ci-btn:active { transform: scale(0.88); }
-
 .ci-btn:disabled {
-  opacity: 0.3;
+  opacity: 0.25;
   cursor: not-allowed;
 }
 
 .ci-val {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  min-width: 28px;
+  min-width: 32px;
   text-align: center;
   color: var(--clr-text);
   transition: transform 0.12s ease;
 }
 
-.ci-val.bump {
-  transform: scale(1.35);
-}
+.ci-val.bump { transform: scale(1.4); }
 
 /* ---- Bouton Commencer ---- */
 .start-btn {
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1.1rem 1.5rem;
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   background: linear-gradient(135deg, var(--clr-offline), var(--clr-offline-2));
   color: #fff;
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  box-shadow: 0 8px 28px rgba(249,115,22,0.35);
-  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+  box-shadow: 0 6px 24px rgba(249,115,22,0.4), 0 1px 0 rgba(255,255,255,0.15) inset;
+  transition: transform var(--transition), box-shadow var(--transition);
   -webkit-tap-highlight-color: transparent;
+  min-height: 56px;
 }
 
 .start-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(249,115,22,0.45);
+  box-shadow: 0 10px 32px rgba(249,115,22,0.5), 0 1px 0 rgba(255,255,255,0.15) inset;
 }
 
-.start-btn:active {
-  transform: scale(0.97);
-}
+.start-btn:active { transform: scale(0.97); }
 
 .start-btn__icon {
   font-size: 1.15rem;

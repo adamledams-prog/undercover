@@ -42,9 +42,9 @@
           </div>
         </div>
         <div class="counter-inline">
-          <button class="ci-btn" id="btnJoueursMinus" aria-label="Moins de joueurs" onclick="change('joueurs',-1)">−</button>
+          <button class="ci-btn" id="btnJoueursMinus" aria-label="Moins de joueurs" data-key="joueurs" data-delta="-1">−</button>
           <span class="ci-val" id="joueurCount">4</span>
-          <button class="ci-btn" id="btnJoueursPlus"  aria-label="Plus de joueurs"  onclick="change('joueurs',+1)">+</button>
+          <button class="ci-btn" id="btnJoueursPlus"  aria-label="Plus de joueurs"  data-key="joueurs" data-delta="1">+</button>
         </div>
       </div>
 
@@ -60,9 +60,9 @@
           </div>
         </div>
         <div class="counter-inline">
-          <button class="ci-btn" id="btnUcMinus" aria-label="Moins d'undercover" onclick="change('uc',-1)">−</button>
+          <button class="ci-btn" id="btnUcMinus" aria-label="Moins d'undercover" data-key="uc" data-delta="-1">−</button>
           <span class="ci-val" id="ucCount">1</span>
-          <button class="ci-btn" id="btnUcPlus"  aria-label="Plus d'undercover"  onclick="change('uc',+1)">+</button>
+          <button class="ci-btn" id="btnUcPlus"  aria-label="Plus d'undercover"  data-key="uc" data-delta="1">+</button>
         </div>
       </div>
 
@@ -78,9 +78,9 @@
           </div>
         </div>
         <div class="counter-inline">
-          <button class="ci-btn" id="btnWMinus" aria-label="Moins de Mr White" onclick="change('white',-1)">−</button>
+          <button class="ci-btn" id="btnWMinus" aria-label="Moins de Mr White" data-key="white" data-delta="-1">−</button>
           <span class="ci-val" id="whiteCount">0</span>
-          <button class="ci-btn" id="btnWPlus"  aria-label="Plus de Mr White"  onclick="change('white',+1)">+</button>
+          <button class="ci-btn" id="btnWPlus"  aria-label="Plus de Mr White"  data-key="white" data-delta="1">+</button>
         </div>
       </div>
 
@@ -97,6 +97,6 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="lobby.js"></script>
+  <script type="module" src="lobby.js"></script>
 </body>
 </html>

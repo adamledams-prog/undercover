@@ -30,7 +30,7 @@
       <div class="mode-cards">
 
         <!-- Mode Hors ligne -->
-        <button class="mode-card mode-card--offline" onclick="choisirMode('offline')">
+        <button class="mode-card mode-card--offline" id="btnOffline">
           <div class="mode-card__icon-wrap">
             <span class="mode-card__icon">📵</span>
           </div>
@@ -42,7 +42,7 @@
         </button>
 
         <!-- Mode En ligne -->
-        <button class="mode-card mode-card--online" onclick="choisirMode('online')">
+        <button class="mode-card mode-card--online" id="btnOnline">
           <div class="mode-card__icon-wrap">
             <span class="mode-card__icon">🌐</span>
           </div>
@@ -57,7 +57,7 @@
     </section>
 
     <section class="rules-teaser">
-      <button class="rules-btn" id="rulesBtn" aria-expanded="false" onclick="toggleRules()">
+      <button class="rules-btn" id="rulesBtn" aria-expanded="false">
         <span>📖 Règles du jeu</span>
         <span class="rules-btn__chevron" id="rulesChevron">▾</span>
       </button>
@@ -82,6 +82,6 @@
   <!-- Toast notification -->
   <div class="toast" id="toast"></div>
 
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

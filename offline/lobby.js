@@ -15,10 +15,8 @@ function change(key, delta) {
   const cfg  = CONFIGS[key];
   const next = cfg.val + delta;
   if (next < cfg.min || next > cfg.max) return;
-
   cfg.val = next;
 
-  /* Animation bump */
   const el = document.getElementById(cfg.displayId);
   el.classList.remove('bump');
   void el.offsetWidth;
@@ -35,8 +33,6 @@ function updateUI() {
     document.getElementById(cfg.minId).disabled  = cfg.val <= cfg.min;
     document.getElementById(cfg.plusId).disabled = cfg.val >= cfg.max;
   }
-
-  /* Validation : imposteurs < joueurs */
   const total      = CONFIGS.joueurs.val;
   const imposteurs = CONFIGS.uc.val + CONFIGS.white.val;
   hintEl.textContent = imposteurs >= total
@@ -44,18 +40,23 @@ function updateUI() {
     : '';
 }
 
-/* ---- Commencer la partie ---- */
-function demarrer() {
+/* ---- Boutons compteurs ---- */
+document.querySelectorAll('.ci-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    change(btn.dataset.key, parseInt(btn.dataset.delta, 10));
+  });
+});
+
+/* ---- Bouton Commencer ---- */
+document.getElementById('startBtn').addEventListener('click', () => {
   const total      = CONFIGS.joueurs.val;
   const imposteurs = CONFIGS.uc.val + CONFIGS.white.val;
-
   if (imposteurs >= total) {
     showToast('⚠️ Réduisez le nombre d\'imposteurs !');
     return;
   }
-
   window.location.href = `game.html?joueurs=${total}&uc=${CONFIGS.uc.val}&white=${CONFIGS.white.val}`;
-}
+});
 
 /* ---- Toast ---- */
 let toastTimer = null;

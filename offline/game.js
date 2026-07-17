@@ -78,9 +78,17 @@ const roleHint   = document.getElementById('roleHint');
 const passTitle  = document.getElementById('passTitle');
 const passName   = document.getElementById('passName');
 
+const progressFill = document.getElementById('progressFill');
+const playerAvatar = document.getElementById('playerAvatar');
+
 /* ============================================
    NAVIGATION ENTRE PANELS
    ============================================ */
+function updateProgress() {
+  const pct = (current / NB_JOUEURS) * 100;
+  progressFill.style.width = pct + '%';
+}
+
 function show(panel) {
   [panelName, panelRole, panelPass, panelDone].forEach(p => {
     p.classList.add('panel--hidden');
@@ -104,15 +112,30 @@ function showName() {
   nameLabel.textContent = def;
   nameInput.value       = NOMS[current] || '';
   nameInput.placeholder = `${def}…`;
+  playerAvatar.textContent = num;
 
+  updateProgress();
   show(panelName);
   setTimeout(() => nameInput.focus(), 300);
 }
 
-function clearName() {
+/* ---- Câblage des boutons ---- */
+document.getElementById('clearBtn').addEventListener('click', () => {
   nameInput.value = '';
   nameInput.focus();
-}
+});
+
+document.getElementById('revealBtn').addEventListener('click', revealRole);
+document.getElementById('memorizedBtn').addEventListener('click', nextPlayer);
+document.getElementById('passBtn').addEventListener('click', showName);
+document.getElementById('doneBtn').addEventListener('click', () => {
+  window.location.href = '../index.html';
+});
+
+/* ============================================
+   INIT
+   ============================================ */
+showName();
 
 /* ============================================
    PANEL ROLE
@@ -163,6 +186,7 @@ function nextPlayer() {
    PANEL DONE
    ============================================ */
 function showDone() {
+  progressFill.style.width = '100%';
   const recap = document.getElementById('doneRecap');
   recap.innerHTML = '';
 
