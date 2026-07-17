@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undercover — Hors ligne</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="lobby.css" />
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <main class="lobby">
+
+    <!-- Bouton retour -->
+    <a href="../index.html" class="back-btn" aria-label="Retour à l'accueil">
+      <span class="back-btn__arrow">←</span>
+      <span>Accueil</span>
+    </a>
+
+    <header class="lobby__header">
+      <span class="lobby__badge">📵 Hors ligne</span>
+      <h1 class="lobby__title">Nouvelle partie</h1>
+      <p class="lobby__sub">Configurez votre partie avant de commencer</p>
+    </header>
+
+    <!-- Config globale -->
+    <section class="config-card">
+
+      <!-- Joueurs -->
+      <div class="counter-row">
+        <div class="counter-row__info">
+          <span class="counter-row__icon">👥</span>
+          <div>
+            <span class="counter-row__label">Joueurs</span>
+            <span class="counter-row__range">min 3 · max 20</span>
+          </div>
+        </div>
+        <div class="counter-inline">
+          <button class="ci-btn" id="btnJoueursMinus" aria-label="Moins de joueurs" onclick="change('joueurs',-1)">−</button>
+          <span class="ci-val" id="joueurCount">4</span>
+          <button class="ci-btn" id="btnJoueursPlus"  aria-label="Plus de joueurs"  onclick="change('joueurs',+1)">+</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Undercover -->
+      <div class="counter-row">
+        <div class="counter-row__info">
+          <span class="counter-row__icon">🕵️</span>
+          <div>
+            <span class="counter-row__label">Undercover</span>
+            <span class="counter-row__range">min 1 · max 3</span>
+          </div>
+        </div>
+        <div class="counter-inline">
+          <button class="ci-btn" id="btnUcMinus" aria-label="Moins d'undercover" onclick="change('uc',-1)">−</button>
+          <span class="ci-val" id="ucCount">1</span>
+          <button class="ci-btn" id="btnUcPlus"  aria-label="Plus d'undercover"  onclick="change('uc',+1)">+</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Mr White -->
+      <div class="counter-row">
+        <div class="counter-row__info">
+          <span class="counter-row__icon">🤍</span>
+          <div>
+            <span class="counter-row__label">Mr White</span>
+            <span class="counter-row__range">min 0 · max 3</span>
+          </div>
+        </div>
+        <div class="counter-inline">
+          <button class="ci-btn" id="btnWMinus" aria-label="Moins de Mr White" onclick="change('white',-1)">−</button>
+          <span class="ci-val" id="whiteCount">0</span>
+          <button class="ci-btn" id="btnWPlus"  aria-label="Plus de Mr White"  onclick="change('white',+1)">+</button>
+        </div>
+      </div>
+
+      <p class="config-card__hint" id="hintMsg"></p>
+    </section>
+
+    <!-- Bouton commencer -->
+    <button class="start-btn" id="startBtn" onclick="demarrer()">
+      <span>Commencer</span>
+      <span class="start-btn__icon">🚀</span>
+    </button>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="lobby.js"></script>
+</body>
+</html>
