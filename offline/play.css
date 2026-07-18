@@ -1,0 +1,326 @@
+/* ============================================
+   PLAY PAGE — play.css
+   ============================================ */
+
+.play-page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  min-height: 100dvh;
+  padding: 2rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---- Header ---- */
+.play-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.round-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-offline);
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.22);
+  border-radius: 2rem;
+  padding: 0.28rem 0.9rem;
+  width: fit-content;
+}
+
+.play-title {
+  font-size: clamp(1.4rem, 6vw, 1.9rem);
+  font-weight: 900;
+  color: var(--clr-text);
+  letter-spacing: -0.3px;
+}
+
+.play-sub {
+  font-size: 0.82rem;
+  color: var(--clr-muted);
+}
+
+/* ============================================
+   CARTE JOUEUR ACTIF (grande)
+   ============================================ */
+.active-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--clr-offline) 0%, var(--clr-offline-2) 100%);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 32px rgba(249,115,22,0.4), 0 1px 0 rgba(255,255,255,0.15) inset;
+  animation: cardIn 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  overflow: hidden;
+}
+
+.active-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: scale(0.88) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.active-card__num {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.9rem;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+
+.active-card__name {
+  font-size: clamp(1.8rem, 8vw, 2.5rem);
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.active-card__hint {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   GRILLE DES AUTRES JOUEURS
+   ============================================ */
+.players-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+/* ---- Carte joueur (état normal) ---- */
+.player-card {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  background: var(--clr-card);
+  border: 1.5px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.25s, border-color 0.25s, box-shadow 0.25s;
+  box-shadow: var(--shadow-card);
+}
+
+.player-card__num {
+  position: absolute;
+  top: 0.45rem;
+  left: 0.55rem;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--clr-muted);
+  letter-spacing: 0.05em;
+}
+
+.player-card__name {
+  font-size: clamp(0.75rem, 3.5vw, 0.95rem);
+  font-weight: 800;
+  color: var(--clr-text);
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+/* ---- Carte done (a parlé) ---- */
+.player-card--done {
+  opacity: 0.38;
+  border-color: transparent;
+}
+
+.player-card--done .player-card__name {
+  text-decoration: line-through;
+  color: var(--clr-muted);
+}
+
+.player-card__check {
+  font-size: 1rem;
+  color: #4ade80;
+}
+
+/* ============================================
+   BOUTON SUIVANT
+   ============================================ */
+.next-btn {
+  width: 100%;
+  padding: 1.05rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--clr-offline), var(--clr-offline-2));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(249,115,22,0.4), 0 1px 0 rgba(255,255,255,0.15) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 56px;
+  margin-top: auto;
+}
+
+.next-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(249,115,22,0.5);
+}
+
+.next-btn:active { transform: scale(0.97); }
+
+/* ---- Bouton fin de manche (vote) ---- */
+.next-btn--vote {
+  background: linear-gradient(135deg, #6c63ff, #a78bfa);
+  box-shadow: 0 6px 24px rgba(108,99,255,0.4);
+}
+
+.next-btn--vote:hover {
+  box-shadow: 0 10px 32px rgba(108,99,255,0.5);
+}
+
+/* ============================================
+   ÉCRAN DE VOTE (fin de manche)
+   ============================================ */
+.vote-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  animation: fadeUp 0.32s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.vote-title {
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 900;
+  color: var(--clr-text);
+}
+
+.vote-sub {
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+  margin-top: -0.8rem;
+}
+
+.vote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+/* Carte de vote — cliquable */
+.vote-card {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  background: var(--clr-card);
+  border: 2px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vote-card:active { transform: scale(0.94); }
+
+.vote-card--selected {
+  border-color: #f87171;
+  box-shadow: 0 0 24px rgba(248,113,113,0.35);
+  background: rgba(248,113,113,0.08);
+}
+
+.vote-card__name {
+  font-size: clamp(0.78rem, 3.5vw, 0.95rem);
+  font-weight: 800;
+  color: var(--clr-text);
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.vote-card__votes {
+  font-size: 0.7rem;
+  color: var(--clr-muted);
+  font-weight: 600;
+}
+
+.vote-card--selected .vote-card__name {
+  color: #f87171;
+}
+
+/* Bouton confirmer le vote */
+.confirm-btn {
+  width: 100%;
+  padding: 1.05rem;
+  border: none;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(239,68,68,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-height: 56px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.confirm-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(239,68,68,0.5);
+}
+
+.confirm-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (min-width: 600px) {
+  .play-page {
+    min-height: unset;
+    padding: 2.5rem 2rem;
+  }
+}

@@ -7,6 +7,7 @@ export default defineConfig({
         main:    'index.html',
         offline: 'offline/index.html',
         game:    'offline/game.html',
+        play:    'offline/play.html',
       }
     }
   }

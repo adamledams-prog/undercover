@@ -172,32 +172,48 @@ function nextPlayer() {
   current++;
 
   if (current >= NB_JOUEURS) {
-    showDone();
+    startGame();
     return;
   }
 
-  /* Affiche l'écran "Passe l'appareil" avant le joueur suivant */
   const nextNom = `Joueur ${current + 1}`;
   passName.textContent = nextNom;
   show(panelPass);
 }
 
 /* ============================================
-   PANEL DONE
+   DÉMARRAGE — ordre de jeu aléatoire
    ============================================ */
-function showDone() {
+function startGame() {
   progressFill.style.width = '100%';
-  const recap = document.getElementById('doneRecap');
-  recap.innerHTML = '';
 
-  NOMS.forEach((nom, i) => {
-    const row = document.createElement('div');
-    row.className = 'recap-row';
-    row.innerHTML = `<span>${nom || `Joueur ${i + 1}`}</span><span>Rôle reçu ✓</span>`;
-    recap.appendChild(row);
-  });
+  // Construire la liste des joueurs avec leur rôle
+  const players = NOMS.map((nom, i) => ({
+    name:     nom || `Joueur ${i + 1}`,
+    roleType: ROLES[i].type,
+    mot:      ROLES[i].mot,
+  }));
 
-  show(panelDone);
+  // Mélanger (Fisher-Yates)
+  for (let i = players.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [players[i], players[j]] = [players[j], players[i]];
+  }
+
+  // Mr White ne peut pas être 1er — le pousser au moins en 2e
+  if (players[0].roleType === 'white') {
+    const swap = players.findIndex((p, i) => i > 0 && p.roleType !== 'white');
+    if (swap > 0) [players[0], players[swap]] = [players[swap], players[0]];
+  }
+
+  // Sauvegarder dans sessionStorage (rôles cachés côté play.js)
+  sessionStorage.setItem('undercoverGame', JSON.stringify({
+    players,          // ordre de jeu avec infos rôles (pour révélation finale)
+    motCivil: MOT_CIVIL,
+    motUc:    MOT_UC,
+  }));
+
+  window.location.href = 'play.html';
 }
 
 /* ============================================

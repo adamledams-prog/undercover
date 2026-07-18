@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undercover — Partie en cours</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="play.css" />
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <main class="play-page">
+
+    <!-- Header -->
+    <header class="play-header">
+      <div class="round-badge" id="roundBadge">Tour 1</div>
+      <h1 class="play-title" id="playTitle">À toi de jouer !</h1>
+      <p class="play-sub" id="playSub">Décris ton mot en un seul indice.</p>
+    </header>
+
+    <!-- Carte joueur actif -->
+    <div class="active-card" id="activeCard">
+      <div class="active-card__num" id="activeNum">1</div>
+      <span class="active-card__name" id="activeName">—</span>
+      <span class="active-card__hint">Donne ton indice !</span>
+    </div>
+
+    <!-- Grille des autres joueurs -->
+    <div class="players-grid" id="playersGrid"></div>
+
+    <!-- Bouton suivant -->
+    <button class="next-btn" id="nextBtn">
+      <span id="nextBtnLabel">Suivant →</span>
+    </button>
+
+  </main>
+
+  <script type="module" src="play.js"></script>
+</body>
+</html>
