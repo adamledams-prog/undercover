@@ -140,21 +140,41 @@ function eliminatePlayer(idx) {
   const aliveCivils  = alive.filter(p => p.roleType === 'civil');
   const eliminated   = players[idx];
 
+  /* Message d'élimination selon le rôle */
+  const roleMsg = {
+    civil:   { emoji: '👤', label: '1 civil éliminé',      color: '#60a5fa' },
+    uc:      { emoji: '🕵️', label: '1 undercover éliminé', color: '#f97316' },
+    white:   { emoji: '🤍', label: 'Mr White éliminé',     color: '#e0e0e0' },
+  }[eliminated.roleType];
+
   /* Conditions de fin */
-  if (aliveUc.length === 0 && aliveWhite.length === 0) {
-    return showEndScreen('civils');           // Civils gagnent
-  }
-  if (aliveCivils.length <= aliveUc.length + aliveWhite.length) {
-    return showEndScreen('imposteurs');       // Imposteurs gagnent
-  }
+  const gameOver =
+    (aliveUc.length === 0 && aliveWhite.length === 0)
+    || (aliveCivils.length <= aliveUc.length + aliveWhite.length);
 
-  /* Mr White éliminé → il peut deviner le mot civil */
-  if (eliminated.roleType === 'white') {
-    return showMrWhiteGuess(eliminated, alive);
-  }
+  const next = () => {
+    if (aliveUc.length === 0 && aliveWhite.length === 0) return showEndScreen('civils');
+    if (aliveCivils.length <= aliveUc.length + aliveWhite.length) return showEndScreen('imposteurs');
+    if (eliminated.roleType === 'white') return showMrWhiteGuess(eliminated, alive);
+    nextRound(alive);
+  };
 
-  /* Continuer la manche suivante */
-  nextRound(alive);
+  showEliminationFlash(eliminated.name, roleMsg, next);
+}
+
+/* ---- Écran flash d'élimination ---- */
+function showEliminationFlash(name, roleMsg, callback) {
+  const main = document.querySelector('.play-page');
+  main.innerHTML = `
+    <div class="vote-screen" style="align-items:center;text-align:center">
+      <div class="done-icon">${roleMsg.emoji}</div>
+      <div class="round-badge" style="color:${roleMsg.color};border-color:${roleMsg.color}40;background:${roleMsg.color}15;align-self:center">
+        ${roleMsg.label}
+      </div>
+      <h2 class="vote-title" style="text-align:center">${name} est éliminé·e</h2>
+      <button class="next-btn" id="flashNext">Continuer →</button>
+    </div>`;
+  document.getElementById('flashNext').addEventListener('click', callback);
 }
 
 /* ============================================
