@@ -7,6 +7,10 @@ document.getElementById('btnUndercover').addEventListener('click', () => {
   window.location.href = 'offline/index.html';
 });
 
+document.getElementById('btnZentrix').addEventListener('click', () => {
+  window.location.href = 'zentrix/host.html';
+});
+
 /* ---- Toast ---- */
 let toastTimer = null;
 

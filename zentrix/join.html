@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zentrix — Rejoindre</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="zentrix.css" />
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <main class="zjoin">
+
+    <!-- Icône & titre -->
+    <div class="zjoin__hero">
+      <span class="zjoin__emoji">🎮</span>
+      <h1 class="zjoin__title">Zentrix</h1>
+      <p class="zjoin__sub" id="joinSub">Rejoindre la partie…</p>
+    </div>
+
+    <!-- Formulaire de nom -->
+    <div class="zjoin__form" id="joinForm">
+      <label class="zjoin__label" for="nameInput">Ton prénom</label>
+      <div class="zjoin__field-wrap">
+        <input
+          class="zjoin__input"
+          id="nameInput"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="20"
+          placeholder="Entre ton prénom…"
+          autofocus
+        />
+        <button class="zjoin__clear" id="clearBtn" aria-label="Effacer">✕</button>
+      </div>
+      <button class="zjoin__submit" id="joinBtn">
+        <span>Rejoindre →</span>
+      </button>
+    </div>
+
+    <!-- Écran d'attente (après avoir rejoint) -->
+    <div class="zjoin__waiting" id="waitingScreen" hidden>
+      <div class="waiting-icon">⏳</div>
+      <h2 class="waiting-title">Tu es dans la partie !</h2>
+      <p class="waiting-name" id="waitingName"></p>
+      <p class="waiting-sub">En attente que l'hôte lance la partie…</p>
+      <div class="waiting-pulse">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Erreur -->
+    <div class="zjoin__error" id="errorScreen" hidden>
+      <span class="error-icon">❌</span>
+      <p class="error-msg" id="errorMsg">Salle introuvable.</p>
+      <a href="../index.html" class="zjoin__submit" style="text-decoration:none;text-align:center">Retour à l'accueil</a>
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="join.js"></script>
+</body>
+</html>

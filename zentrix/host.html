@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zentrix — Salle d'attente</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="zentrix.css" />
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <main class="zhost">
+
+    <!-- Header -->
+    <header class="zhost__header">
+      <a href="../index.html" class="back-btn" aria-label="Retour">
+        <span class="back-btn__arrow">←</span>
+        <span>Accueil</span>
+      </a>
+      <div class="zhost__title-wrap">
+        <span class="zhost__game-badge">🎮 Zentrix</span>
+        <h1 class="zhost__title">Salle d'attente</h1>
+      </div>
+    </header>
+
+    <!-- QR + Code -->
+    <section class="zhost__invite">
+      <p class="zhost__invite-label">Les joueurs scannent ce QR code :</p>
+
+      <div class="qr-wrap" id="qrWrap">
+        <img class="qr-img" id="qrImg" src="" alt="QR Code" />
+        <div class="qr-loader" id="qrLoader">⏳</div>
+      </div>
+
+      <div class="room-code-row">
+        <span class="room-code-label">Code :</span>
+        <span class="room-code" id="roomCode">—</span>
+        <button class="copy-btn" id="copyBtn" aria-label="Copier le lien">📋</button>
+      </div>
+
+      <button class="share-btn" id="shareBtn">
+        <span>📤 Inviter des joueurs</span>
+      </button>
+    </section>
+
+    <!-- Liste des joueurs -->
+    <section class="zhost__players">
+      <div class="players-header">
+        <span class="players-label">Joueurs connectés</span>
+        <span class="players-count" id="playersCount">0 / ?</span>
+      </div>
+      <ul class="player-list" id="playerList">
+        <li class="player-list__empty">En attente de joueurs…</li>
+      </ul>
+    </section>
+
+    <!-- Bouton lancer -->
+    <button class="launch-btn" id="launchBtn" disabled>
+      <span id="launchLabel">Attendre des joueurs…</span>
+      <span class="launch-btn__icon">🚀</span>
+    </button>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="host.js"></script>
+</body>
+</html>
