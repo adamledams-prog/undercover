@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undercover</title>
+  <title>Party Games</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,66 +14,50 @@
     <div class="blob blob3"></div>
   </div>
 
-  <main class="home">
+  <main class="hub">
 
-    <header class="home__header">
+    <header class="hub__header">
       <div class="logo">
-        <span class="logo__icon">🕵️</span>
-        <h1 class="logo__title">Undercover</h1>
+        <span class="logo__icon">🎮</span>
+        <h1 class="logo__title">Party Games</h1>
       </div>
-      <p class="home__tagline">Qui est l'imposteur parmi vous ?</p>
+      <p class="hub__tagline">Choisissez un jeu et amusez-vous !</p>
     </header>
 
-    <section class="mode-select">
-      <h2 class="mode-select__label">Choisissez un mode</h2>
+    <div class="games-grid">
 
-      <div class="mode-cards">
-
-        <!-- Mode Hors ligne -->
-        <button class="mode-card mode-card--offline" id="btnOffline">
-          <div class="mode-card__icon-wrap">
-            <span class="mode-card__icon">📵</span>
-          </div>
-          <div class="mode-card__body">
-            <h3 class="mode-card__title">Hors ligne</h3>
-            <p class="mode-card__desc">Jouez entre amis sur un seul appareil, sans connexion internet.</p>
-          </div>
-          <span class="mode-card__arrow">→</span>
-        </button>
-
-        <!-- Mode En ligne -->
-        <button class="mode-card mode-card--online" id="btnOnline">
-          <div class="mode-card__icon-wrap">
-            <span class="mode-card__icon">🌐</span>
-          </div>
-          <div class="mode-card__body">
-            <h3 class="mode-card__title">En ligne</h3>
-            <p class="mode-card__desc">Créez une salle et invitez vos amis à distance via un code.</p>
-          </div>
-          <span class="mode-card__arrow">→</span>
-        </button>
-
-      </div>
-    </section>
-
-    <section class="rules-teaser">
-      <button class="rules-btn" id="rulesBtn" aria-expanded="false">
-        <span>📖 Règles du jeu</span>
-        <span class="rules-btn__chevron" id="rulesChevron">▾</span>
+      <!-- Undercover -->
+      <button class="game-card game-card--undercover" id="btnUndercover">
+        <span class="game-card__emoji">🕵️</span>
+        <h2 class="game-card__name">Undercover</h2>
+        <p class="game-card__desc">Trouve l'imposteur</p>
+        <span class="game-card__players">3–20 joueurs</span>
       </button>
-      <div class="rules-panel" id="rulesPanel" hidden>
-        <ul class="rules-list">
-          <li>🃏 Chaque joueur reçoit un mot secret.</li>
-          <li>🕵️ L'<strong>Undercover</strong> reçoit un mot similaire mais différent.</li>
-          <li>💀 Le <strong>Monsieur Blanc</strong> ne reçoit <em>aucun</em> mot.</li>
-          <li>💬 Chacun décrit son mot en <strong>un seul indice</strong> par tour.</li>
-          <li>🗳️ Les joueurs votent pour éliminer le suspect.</li>
-          <li>🏆 Les civils gagnent en éliminant tous les imposteurs.</li>
-        </ul>
-      </div>
-    </section>
 
-    <footer class="home__footer">
+      <!-- Placeholder 2 -->
+      <div class="game-card game-card--soon">
+        <span class="game-card__emoji">🎯</span>
+        <h2 class="game-card__name">Bientôt</h2>
+        <p class="game-card__desc">En cours…</p>
+      </div>
+
+      <!-- Placeholder 3 -->
+      <div class="game-card game-card--soon">
+        <span class="game-card__emoji">🎲</span>
+        <h2 class="game-card__name">Bientôt</h2>
+        <p class="game-card__desc">En cours…</p>
+      </div>
+
+      <!-- Placeholder 4 -->
+      <div class="game-card game-card--soon">
+        <span class="game-card__emoji">🃏</span>
+        <h2 class="game-card__name">Bientôt</h2>
+        <p class="game-card__desc">En cours…</p>
+      </div>
+
+    </div>
+
+    <footer class="hub__footer">
       <p>v1.0 · Fait avec ❤️</p>
     </footer>
 
