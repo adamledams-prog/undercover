@@ -56,7 +56,7 @@ const MOTS = [
   ['Pastèque',      'Melon'],
   ['Pêche',         'Abricot'],
   ['Tomate',        'Poivron'],
-  ['Carotte',       'Navet'],
+  ['Carotte',       'Radis'],
   ['Champignon',    'Cornichon'],
   ['Spaghetti',     'Macaroni'],
   ['Coca',          'Limonade'],
