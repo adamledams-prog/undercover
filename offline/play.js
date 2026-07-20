@@ -294,21 +294,26 @@ function showEndScreen(winner) {
   const main = document.querySelector('.play-page');
 
   const config = {
-    civils:      { emoji: '🏆', title: 'Les civils ont gagné !',     color: '#4ade80', msg: 'Vous avez démasqué tous les imposteurs !'  },
-    imposteurs:  { emoji: '🕵️', title: 'Les imposteurs ont gagné !', color: '#f97316', msg: 'Ils ont réussi à se fondre dans la masse !' },
-    mrwhite:     { emoji: '🤍', title: 'Mr White a gagné !',         color: '#e0e0e0', msg: `Il a deviné le mot : "${motCivil}" !`       },
+    civils:      { emoji: '\uD83C\uDFC6', title: 'Les civils ont gagn\u00e9 !',     color: '#4ade80', msg: 'Vous avez d\u00e9masqu\u00e9 tous les imposteurs !'  },
+    imposteurs:  { emoji: '\uD83D\uDD75\uFE0F', title: 'Les imposteurs ont gagn\u00e9 !', color: '#f97316', msg: 'Ils ont r\u00e9ussi \u00e0 se fondre dans la masse !' },
+    mrwhite:     { emoji: '\uD83E\uDD0D', title: 'Mr White a gagn\u00e9 !',         color: '#e0e0e0', msg: `Il a devin\u00e9 le mot : "${motCivil}" !`       },
   }[winner];
 
   const rows = players.map(p => {
-    const roleLabel = p.roleType === 'civil' ? `Civil · <em>${motCivil}</em>`
-      : p.roleType === 'uc'    ? `Undercover · <em>${motUc}</em>`
+    const roleLabel = p.roleType === 'civil' ? `Civil \u00b7 <em>${motCivil}</em>`
+      : p.roleType === 'uc'    ? `Undercover \u00b7 <em>${motUc}</em>`
       :                          'Mr White';
-    const elim = p.eliminated ? '💀' : '✅';
+    const elim = p.eliminated ? '\uD83D\uDC80' : '\u2705';
     return `<div class="recap-row">
       <span>${elim} ${p.name}</span>
       <span>${roleLabel}</span>
     </div>`;
   }).join('');
+
+  /* Infos pour rejouer */
+  const nbUc    = players.filter(p => p.roleType === 'uc').length;
+  const nbWhite = players.filter(p => p.roleType === 'white').length;
+  const replayUrl = `game.html?joueurs=${players.length}&uc=${nbUc}&white=${nbWhite}`;
 
   main.innerHTML = `
     <div class="vote-screen">
@@ -319,13 +324,22 @@ function showEndScreen(winner) {
       <h2 class="vote-title">${config.title}</h2>
       <p class="vote-sub">${config.msg}</p>
       <div class="done-recap">${rows}</div>
-      <button class="next-btn" id="homeBtn">
-        Retour à l'accueil
-      </button>
+      <div class="end-btns">
+        <button class="end-btn end-btn--ghost" id="homeBtn">\uD83C\uDFE0 Accueil</button>
+        <button class="end-btn end-btn--replay" id="replayBtn">\uD83D\uDD04 Rejouer</button>
+      </div>
     </div>`;
 
   document.getElementById('homeBtn').addEventListener('click', () => {
     window.location.href = '../index.html';
+  });
+
+  document.getElementById('replayBtn').addEventListener('click', () => {
+    /* Sauvegarde les pr\u00e9noms pour la prochaine partie */
+    sessionStorage.setItem('undercoverReplay', JSON.stringify({
+      noms: players.map(p => p.name),
+    }));
+    window.location.href = replayUrl;
   });
 }
 

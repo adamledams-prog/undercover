@@ -333,7 +333,12 @@ function buildRoles() {
 }
 
 const ROLES   = buildRoles();
-const NOMS    = Array(NB_JOUEURS).fill('');   // prénoms saisis
+
+/* ---- Noms : charge le replay si disponible ---- */
+const _replay  = JSON.parse(sessionStorage.getItem('undercoverReplay') || 'null');
+if (_replay) sessionStorage.removeItem('undercoverReplay');
+const NOMS = _replay ? [..._replay.noms] : Array(NB_JOUEURS).fill('');
+
 let current   = 0;                            // index joueur actuel
 
 /* ---- Références DOM ---- */
@@ -380,14 +385,15 @@ function show(panel) {
    PANEL NAME
    ============================================ */
 function showName() {
-  const num  = current + 1;
-  const def  = `Joueur ${num}`;
+  const num      = current + 1;
+  const saved    = NOMS[current] || '';
+  const def      = `Joueur ${num}`;
 
-  stepBadge.textContent = `Joueur ${num} / ${NB_JOUEURS}`;
-  nameLabel.textContent = def;
-  nameInput.value       = NOMS[current] || '';
-  nameInput.placeholder = `${def}…`;
-  playerAvatar.textContent = num;
+  stepBadge.textContent    = `Joueur ${num} / ${NB_JOUEURS}`;
+  nameLabel.textContent    = saved || def;
+  nameInput.value          = saved;
+  nameInput.placeholder    = saved || `${def}…`;
+  playerAvatar.textContent = saved ? saved[0].toUpperCase() : String(num);
 
   updateProgress();
   show(panelName);
